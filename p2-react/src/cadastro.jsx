@@ -57,8 +57,10 @@ export default class Cadastro extends Component {
             )}
             
         return (
-            <div>
+            <div class="form__group">
+                <h1>Cadastro</h1>
                 <input username="username"
+                class="form__input"
                     placeholder = "username"
                     value={this.state.usuario.username}
                     onChange={this.handleChange} /><br></br>

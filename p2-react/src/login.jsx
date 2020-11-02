@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import { JsonToTable } from "react-json-to-table";
+import './App.css';
 
 
 export default class Login extends Component {
@@ -57,7 +58,7 @@ export default class Login extends Component {
 
     novoCadastro(){
         const semLogin = {
-            cadastroRed: true,/////////////////////////////////////////
+            cadastroRed: true,
         }
         this.setState({ usuario: semLogin })
     }
@@ -80,13 +81,15 @@ export default class Login extends Component {
             )}
 
         return (
-            <div>
+            <div class="form__group">
+                <h1 >Login</h1>
                 <input name="username"
                     placeholder = "username"
                     value={this.state.usuario.username}
                     onChange={this.handleChange} /><br></br>
 
                 <input name="password"
+                class = 'input'
                     placeholder = "password"
                     value={this.state.usuario.password}
                     onChange={this.handleChange} /><br></br>

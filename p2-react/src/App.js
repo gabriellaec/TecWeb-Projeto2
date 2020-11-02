@@ -9,8 +9,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <Navbar/>
-        <h1>Weather API</h1>
+        {/* <h1>Weather API</h1> */}
         <Routes />
       </header>
     </div>
