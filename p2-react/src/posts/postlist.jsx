@@ -69,7 +69,7 @@ render() {
     
             
             <ul>
-            <li key={post.date}>{post.date}</li>
+            <li key={post.date}>{"Date: "+ (post.date).slice(0, 10) +" - Time: "+ (post.date).slice(11, 16)}</li>
             <li key={post.username}>{post.username}</li>
             <li key={post.content}>{post.content}</li>
             </ul>
