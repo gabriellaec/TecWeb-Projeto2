@@ -12,15 +12,7 @@ export default class Home extends Component {
         this.state = {
             city: [
                     { 
-                        "name": "Guarda",
-                        "country": "Portugal",
-                        "region": "Guarda",
-                        "lat": "40.533",
-                        "lon": "-7.267",
-                        "timezone_id": "Europe/Lisbon",
-                        "localtime": "2020-11-02 02:08",
-                        "localtime_epoch": 1604282880,
-                        "utc_offset": "0.0"
+                        "name": "Guarda"
             }]}
 
         this.handleChange = this.handleChange.bind(this)
@@ -33,15 +25,15 @@ export default class Home extends Component {
         axios.post('http://localhost:3003/place', { name: this.state.city.name })
             .then(resp => {
                 if (Math.floor(resp.status / 100) === 2) { // Checa se o response status code é 2XX(sucesso)
-                    this.setState({ name: resp })
+                    this.setState({ city: resp })
                     if (resp.data.length === 1) 
                         console.log(resp)
 
-                        var novoid = resp.data["City"]
+                        var novoid = resp.data[0]
                         console.log(novoid)
 
                         const json = {
-                            name: novoid,
+                            name: novoid.name,
                             redirectToReferrer: true,
                         }
                         this.setState({ city: json })
@@ -58,7 +50,7 @@ export default class Home extends Component {
             console.log(state)
             console.log(state.city["City"])
 
-            return state.city
+            return state.city[0]
         }
 
         this.setState(handleState(this.state, event))
@@ -85,7 +77,7 @@ export default class Home extends Component {
                 <input name="City"
                     placeholder = "cityname"
                     value={this.state.city.name}
-                    onChange={this.handleChange["City"]} /><br></br>
+                    onChange={this.handleChange} /><br></br>
 
                 
                 <button onClick={this.changePlace}>changePlace</button>

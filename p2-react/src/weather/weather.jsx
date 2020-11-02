@@ -114,7 +114,7 @@ render() {
                             <button onClick={this.cadastrar}>Pesquisar</button>
                         </p>
                     </ul> 
-                    <img src = {bkgr} id = "image" alt="weather" width="500" height="350"/>
+                    <img src = {bkgr} id = "image" alt="weather" width="320" height="220"/>
 
                 </div>
                 <div className="Table"> 

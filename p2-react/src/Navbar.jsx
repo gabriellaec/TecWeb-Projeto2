@@ -1,22 +1,31 @@
 import logo from './logo.svg';
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Routes from './routes'
+import { Link } from 'react-router-dom';
 
 class Navbar extends React.Component{
     render() {
         return (
+          <nav>
             <div>
               <ul id="nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Posts</a></li>
-                <li><a href="#">Tempo atual</a></li>
-                <li><a href="#">Recomendações</a></li>
-                <li><a href="#">Perfil</a></li>
-                    
+                <li>
+                <Link to="/weather" >Weather</Link>
+                </li>
+                <li>
+                <Link to="/city" >City</Link>
+                </li>
+                <li>
+                <Link to="/weather" >Profile</Link>
+                </li>
+                <li>
+                <Link to="/login" >Logout</Link>
+                </li>
+                
               </ul>
             </div>
+            </nav>
         );
     }
 }

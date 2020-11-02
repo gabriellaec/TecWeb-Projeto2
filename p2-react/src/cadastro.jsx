@@ -12,6 +12,8 @@ export default class Cadastro extends Component {
             usuario: [
                 { username: 'user1' ,
                 password: 'senha' ,
+                redirectToReferrer: false,
+                erro: ''
             }]}
 
         this.handleChange = this.handleChange.bind(this)
@@ -24,13 +26,18 @@ export default class Cadastro extends Component {
         .then(resp => {
             if(Math.floor(resp.status/100) === 2) {
                 this.setState((state) => {
-                return {
-                    usuario: {
-                    username: '',
-                    senha: ''},
+
+                    var novoid = resp.usuario[0]
+                    console.log(resp.usuario)
+
+                const dict = {
+                    username: novoid.username,
+                    password: novoid.password,
                     redirectToReferrer: true        
                 }
-            })
+            
+            this.setState({ usuario: dict })
+        })
             return;
         }
         console.log(resp)
@@ -42,6 +49,7 @@ export default class Cadastro extends Component {
     handleChange(event) {
         var handleState = (state, event) => {
             state.usuario[event.target.username] = event.target.value
+            console.log(state)
             return state
         }
 
@@ -49,7 +57,7 @@ export default class Cadastro extends Component {
     }
 
     render() {
-        if (this.state.redirectToReferrer === true) {
+        if (this.state.usuario.redirectToReferrer === true) {
             return (
                 <Redirect to={{
                     pathname: "/login"
@@ -59,13 +67,14 @@ export default class Cadastro extends Component {
         return (
             <div class="form__group">
                 <h1>Cadastro</h1>
-                <input username="username"
+                <input name="username"
                 class="form__input"
                     placeholder = "username"
                     value={this.state.usuario.username}
                     onChange={this.handleChange} /><br></br>
 
-                <input password="password"
+                <input name="password"
+                    class="form__input"
                     placeholder = "password"
                     value={this.state.usuario.password}
                     onChange={this.handleChange} /><br></br>
