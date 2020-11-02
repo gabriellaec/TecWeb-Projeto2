@@ -10,10 +10,8 @@ export default class Home extends Component {
 
         // Inicializando o State com alguns valores para testarmos
         this.state = {
-            city: [
-                    { 
-                        "name": "Guarda"
-            }]}
+            lista: [{ name: ""
+            }], city: {name: ''}}
 
         this.handleChange = this.handleChange.bind(this)
         this.changePlace = this.changePlace.bind(this)
@@ -22,35 +20,30 @@ export default class Home extends Component {
 
     changePlace() {
         // Fazendo a requisição assíncrona do GET lista de usuários e atualizando o state
-        axios.post('http://localhost:3003/place', { name: this.state.city.name })
+        axios.post('http://localhost:3003/place', this.state.city )
             .then(resp => {
                 if (Math.floor(resp.status / 100) === 2) { // Checa se o response status code é 2XX(sucesso)
-                    this.setState({ city: resp })
-                    if (resp.data.length === 1) 
-                        console.log(resp)
-
-                        var novoid = resp.data[0]
-                        console.log(novoid)
-
-                        const json = {
-                            name: novoid.name,
-                            redirectToReferrer: true,
+                    this.setState((state) => {
+                        return {
+                            lista: [...state.lista, state.city],
+                            city: {name: ''},
+                            redirectToReferrer: true // Vamos usar essa flag pra redirecionar para outra página quando o login for bem sucedido
                         }
-                        this.setState({ city: json })
-                        return;
-                    } else {
-                        return;
-                    }})
+                    })
+                }
+                console.log(resp)
+            })
             .catch(erro => console.log(erro))
     }
+
 
     handleChange(event) {
         var handleState = (state, event) => {
             state.city[event.target.name] = event.target.value
             console.log(state)
-            console.log(state.city["City"])
-
-            return state.city[0]
+           // var cidade = state.city[0]
+            // console.log(cidade)
+            return state
         }
 
         this.setState(handleState(this.state, event))
@@ -60,24 +53,20 @@ export default class Home extends Component {
     render() {
         if (this.state.redirectToReferrer === true) {
             return (
-                <Redirect to={{
-                    pathname: "/weather",
-                    // state: {
-                    //     id: this.state.city.name,
-                    // }
-                }
-                } 
-                    />
+                <Redirect to= "/city"  />
         )}
 
 
         return (
             <div class="form__group">
                 <h1 >changePlace</h1>
-                <input name="City"
+                <input type="text"
+                    name="City"
                     placeholder = "cityname"
-                    value={this.state.city.name}
-                    onChange={this.handleChange} /><br></br>
+                    // value={this.state.city.name}
+                    onChange={this.handleChange} 
+                    />
+                    <br></br>
 
                 
                 <button onClick={this.changePlace}>changePlace</button>
