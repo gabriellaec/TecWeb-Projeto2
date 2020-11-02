@@ -5,24 +5,21 @@ import Routes from './routes'
 import { Link } from 'react-router-dom';
 
 class Navbar extends React.Component{
+  
     render() {
         return (
           <nav>
             <div>
               <ul id="nav">
                 <li>
-                <Link to="/weather" >Weather</Link>
+                <a  href="/weather" >Weather</a>
                 </li>
                 <li>
-                <Link to="/city" >City</Link>
+                <a  href="/city" >Cidade</a>
                 </li>
                 <li>
-                <Link to="/weather" >Profile</Link>
+                <a  href="/login" >Logout</a>
                 </li>
-                <li>
-                <Link to="/login" >Logout</Link>
-                </li>
-                
               </ul>
             </div>
             </nav>
