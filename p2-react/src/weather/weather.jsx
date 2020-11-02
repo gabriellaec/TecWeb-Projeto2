@@ -4,6 +4,8 @@ import { Redirect } from 'react-router-dom'
 import { JsonToTable } from "react-json-to-table";
 import Home from './home'
 import Navbar from "../Navbar";
+import Postlist from "../posts/postlist";
+import '../App.css';
 
 
 export default class Weather extends Component {
@@ -101,16 +103,20 @@ render() {
     }
             return (
             <div class='div'>
-                <Navbar/>
 
-                <Home/>
-                <Redirect to= "/weather"  />
+                <div class='header_weather'>
+                    <Navbar/>
+                    <h1>Weather</h1>
+
+                    <Home/>
+                    <Redirect to= "/weather"  />
+                </div>
+                    
 
             {/* <Navbar/> */}
 
                 {/* <style> #div{ 'background-image': 'url'({bkgr})}; </style> */}
                 <div>
-
                     
                     <img src = {bkgr} id = "image" alt="weather" width="320" height="220"/>
 
@@ -121,6 +127,10 @@ render() {
                         {/* ===================== */}
                         <JsonToTable json={p} />
                         {/* ===================== */}
+
+                </div>
+                <div  className = "posts">
+                <Postlist/>
                 </div>
             </div>
             );

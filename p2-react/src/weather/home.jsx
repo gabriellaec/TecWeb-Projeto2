@@ -68,7 +68,7 @@ export default class Home extends Component {
                 <input type="text"
                     name="City"
                     class = 'form__input'
-                    placeholder = "cityname"
+                    placeholder = "City Name"
                     // value={this.state.city.name}
                     onChange={this.handleChange} 
                     />

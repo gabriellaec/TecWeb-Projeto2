@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom'
 import { JsonToTable } from "react-json-to-table";
 import Home from './home'
 import Navbar from "../Navbar";
+import '../App.css';
 
 export default class City extends Component {
 
