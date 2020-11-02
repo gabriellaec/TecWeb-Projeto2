@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import { JsonToTable } from "react-json-to-table";
-// import Navbar from "../Navbar";
 
 
 export default class Weather extends Component {
@@ -51,7 +50,7 @@ export default class Weather extends Component {
     // event.target representa o elemento que causou o trigger do evento que chamou o método (no caso, será o input do username)
 // handleChange(event) {
 //     var handleState = (state, event) => {
-//         state.usuario[event.target.name] = event.target.value
+//         state.usuario[event.target.city] = event.target.value
 //         return state
 //     }
 //     this.setState(handleState(this.state, event))

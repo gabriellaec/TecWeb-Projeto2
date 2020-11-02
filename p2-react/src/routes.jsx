@@ -6,6 +6,7 @@ import City from './weather/city'
 import Usuarios from './usuarios'
 import Cadastro from './cadastro'
 import Login from './login'
+import Home from './weather/home'
 
 
 //import Teste from './usuarios/teste'
@@ -18,6 +19,7 @@ export default props => (
         <Route path='/usuarios' component={Usuarios} />
         <Route path='/cadastro' component={Cadastro}/>
         <Route path='/login' component={Login} />
+        <Route path='/home' component={Home} />
 
         {/* <Route path='/teste' component={Teste} /> */}
         {/* <Redirect from='*' to='/weather' /> */}

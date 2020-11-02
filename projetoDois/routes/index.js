@@ -168,8 +168,19 @@ req.body.password });
 // });
 
 
+let cidade = 'Miami';
+
+/* GET Place. */
+router.post('/place', function (req, res, next) {
+  console.log(req)
+  console.log(req.body)
+
+  global.cidade = req.body.city;
+  console.log(cidade)
+  
+});
+
 //let apiKey = 'e306bc0cb38032abdae3550cf4782400';
-let cidade = 'Guarda';
 let url = `http://api.weatherstack.com/current?access_key=f18a154e8af2d05014336d0c78ea763f&query=${cidade}`
 let dados ='';
  
