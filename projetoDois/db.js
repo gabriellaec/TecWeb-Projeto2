@@ -7,7 +7,16 @@ var userSchema = new mongoose.Schema({
     password: String
 }, { collection: 'usercollection' }
 );
-module.exports = { Mongoose: mongoose, UserSchema: userSchema }
+
+var postSchema = new mongoose.Schema({
+    username: String,
+    content: String,
+    date: Date
+}, { collection: 'posts' }
+);
+
+
+module.exports = { Mongoose: mongoose, UserSchema: userSchema, PostSchema: postSchema }
 
 
 

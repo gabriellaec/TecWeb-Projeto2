@@ -8,25 +8,63 @@ let request = require('request');
 const mysql = require("mysql");
 var where = require('node-where');
 
-/* GET New User page. */
-router.get('/newuser', function(req, res) {
-  res.render('newuser', { title: 'Add New User' });
+
+
+
+//***********POSTS**********//
+
+/* GET Postlist page. */
+router.get('/postlist', function(req, res) {
+  var db = require("../db");
+  var Posts = db.Mongoose.model('posts', db.PostSchema,
+'posts');
+  Posts.find({}).lean().exec(
+     function (e, docs) {
+      res.json(docs);
+      res.end();  });
+});
+
+
+/* POST to Add User Service */
+router.post('/addpost', function (req, res) {
+  console.log(req.body)
+  var content = req.body.content;
+  var userName = "user";
+  console.log(userName)
+  console.log(content)
+
+  var db = require("../db");
+  
+  var Posts = db.Mongoose.model('posts', db.PostSchema,
+'posts');
+  var user = new Posts({ username: userName, content:
+content, date: new Date() });
+  user.save(function (err) {
+      if (err) {
+          console.log("Error! " + err.message);
+          return err;
+      }
+      else {
+          console.log("Post saved");
+          // res.redirect("userlist");
+      }
   });
+});
 
 
+//******************************************************** */
 // *GET* test
 router.get('/', function(req, res, next){
   res.send("Express is running successfully!");
 });
 
 
-// // *CONNECT* to mysql
-// const db = mysql.createConnection({
-//   user: "root",
-//   host: "localhost",
-//   password: "gabi8009",
-//   database: "Projeto2"
-// });
+
+//***********USERS**********//
+/* GET New User page. */
+router.get('/newuser', function(req, res) {
+  res.render('newuser', { title: 'Add New User' });
+  });
 
 
 /* GET Userlist page. */
@@ -40,21 +78,6 @@ router.get('/userlist', function(req, res) {
       res.end();  });
 });
 
-// router.get('/register', function(req, res, next){
-//   console.log(req)
-//   const username = req.body.username
-//   const password = req.body.password
-
-//   if (username && password){
-//     db.query("INSERT INTO pessoas (nome, senha) VALUES (?,?)"
-//     , [username,password],
-//     (err,result) =>{
-//       console.log(err);
-//     }
-//     );
-//   }
- 
-// });
 
 /* GET New User page. */
 router.get('/newuser', function(req, res) {
@@ -63,9 +86,15 @@ router.get('/newuser', function(req, res) {
 
 /* POST to Add User Service */
 router.post('/adduser', function (req, res) {
-  var db = require("../db");
+
+  console.log(req.body)
   var userName = req.body.username;
   var userPassword = req.body.userpassword;
+  console.log(userName)
+  console.log(userPassword)
+
+  var db = require("../db");
+  
   var Users = db.Mongoose.model('usercollection', db.UserSchema,
 'usercollection');
   var user = new Users({ username: userName, password:
@@ -77,7 +106,7 @@ userPassword });
       }
       else {
           console.log("Post saved");
-          res.redirect("userlist");
+          // res.redirect("userlist");
       }
   });
 });
@@ -168,19 +197,22 @@ req.body.password });
 // });
 
 
+//***********USERS**********//
+
+
+
+//***********CITY/WEATHER**********//
+
 let cidade = 'Miami';
 
 /* GET Place. */
 router.post('/place', function (req, res, next) {
-  console.log(req)
+  // console.log(req)
   console.log(req.body)
 
-  global.cidade = req.body.city;
+  let cidade = req.body.City;
   console.log(cidade)
   
-});
-
-//let apiKey = 'e306bc0cb38032abdae3550cf4782400';
 let url = `http://api.weatherstack.com/current?access_key=f18a154e8af2d05014336d0c78ea763f&query=${cidade}`
 let dados ='';
  
@@ -223,10 +255,7 @@ router.get('/city', function(req, res, next){
 
    }
 });
-
-
-
-
+});
 
 module.exports = router;
 
