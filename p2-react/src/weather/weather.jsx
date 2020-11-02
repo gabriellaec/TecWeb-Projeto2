@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import { JsonToTable } from "react-json-to-table";
+import Home from './home'
+import Navbar from "../Navbar";
 
 
 export default class Weather extends Component {
@@ -99,21 +101,17 @@ render() {
     }
             return (
             <div class='div'>
+                <Navbar/>
+
+                <Home/>
+                <Redirect to= "/weather"  />
+
             {/* <Navbar/> */}
 
                 {/* <style> #div{ 'background-image': 'url'({bkgr})}; </style> */}
                 <div>
 
-                    <ul>
-                        <p>
-                            <label>Local:       </label>
-                            <input local="local"
-                                />
-                        </p>
-                        <p>
-                            <button onClick={this.cadastrar}>Pesquisar</button>
-                        </p>
-                    </ul> 
+                    
                     <img src = {bkgr} id = "image" alt="weather" width="320" height="220"/>
 
                 </div>

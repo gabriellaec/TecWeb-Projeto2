@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import { JsonToTable } from "react-json-to-table";
+import '../App.css';
+import Navbar from "../Navbar";
 
 
 export default class Home extends Component {
@@ -49,19 +51,23 @@ export default class Home extends Component {
         this.setState(handleState(this.state, event))
     }
 
+    refreshPage() {
+        window.location.reload(false);
+      }
+
 
     render() {
         if (this.state.redirectToReferrer === true) {
             return (
-                <Redirect to= "/city"  />
+                <Redirect to= "/weather"  />
         )}
 
 
         return (
             <div class="form__group">
-                <h1 >changePlace</h1>
                 <input type="text"
                     name="City"
+                    class = 'form__input'
                     placeholder = "cityname"
                     // value={this.state.city.name}
                     onChange={this.handleChange} 
@@ -69,7 +75,11 @@ export default class Home extends Component {
                     <br></br>
 
                 
-                <button onClick={this.changePlace}>changePlace</button>
+                <button 
+                onClick={this.changePlace}
+                >changePlace
+                
+                </button>
 
             </div>
         )

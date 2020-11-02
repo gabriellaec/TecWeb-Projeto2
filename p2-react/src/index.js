@@ -20,13 +20,6 @@ ReactDOM.render(
 );
 
 
-// *CONNECT* to mysql
-const db = mysql.createConnection({
-  user: "root",
-  host: "localhost",
-  password: "gabi8009",
-  database: "Projeto2"
-});
 
 
 // If you want to start measuring performance in your app, pass a function

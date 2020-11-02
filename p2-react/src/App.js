@@ -3,8 +3,9 @@ import React from 'react';
 import './App.css';
 import Routes from './routes'
 import Navbar from "./Navbar";
+
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Weather from './weather/weather'
+import Home from './weather/home'
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
         
         {/* <h1>Weather API</h1> */}
         <Router>
-        <Navbar/>
+        {/* <Home/> */}
 
         <br/>
         <Routes />

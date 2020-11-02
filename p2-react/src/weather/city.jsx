@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import { JsonToTable } from "react-json-to-table";
+import Home from './home'
+import Navbar from "../Navbar";
 
 export default class City extends Component {
 
@@ -40,19 +42,13 @@ render() {
     return (
    
     <div >
-        <div>
-              <ul>
-                 <p>
-                     <label>Local:       </label>
-                     <input local="local"
-                         />
-                 </p>
-                 <p>
-                     <button onClick={this.cadastrar}>Pesquisar</button>
-                 </p>
-             </ul> 
-        </div>
+        <Navbar/>
+         <Home/>
+         <br></br>
+        <Redirect to= "/city"  />
         <div className="Table"> 
+       
+
              {/* ===================== */}
                 {/* HOW TO USE IT         */}
                 {/* ===================== */}

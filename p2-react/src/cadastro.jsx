@@ -8,13 +8,9 @@ export default class Cadastro extends Component {
     constructor(props) {
         super(props)
         // Inicializando o State com alguns valores para testarmos
-        this.state = {
-            usuario: [
-                { username: 'user1' ,
-                password: 'senha' ,
-                redirectToReferrer: false,
-                erro: ''
-            }]}
+        this.state = {lista: [
+            {username: 'mrbrightside', password: 'senha'}
+        ], usuario: {username: '', password: ''}}
 
         this.handleChange = this.handleChange.bind(this)
         this.cadastrar = this.cadastrar.bind(this)
@@ -22,28 +18,22 @@ export default class Cadastro extends Component {
 
 
     cadastrar() {
-        axios.post('http://localhost:3003/adduser', { username: this.state.usuario.username, password: this.state.usuario.password})
+        axios.post('http://localhost:3003/adduser', this.state.usuario)
         .then(resp => {
             if(Math.floor(resp.status/100) === 2) {
                 this.setState((state) => {
-
-                    var novoid = resp.usuario[0]
-                    console.log(resp.usuario)
-
-                const dict = {
-                    username: novoid.username,
-                    password: novoid.password,
-                    redirectToReferrer: true        
-                }
-            
-            this.setState({ usuario: dict })
-        })
-            return;
-        }
-        console.log(resp)
+                    return {
+                        lista: [...state.lista, state.usuario],
+                        usuario: {username: '', password: ''},
+                        redirectToReferrer: true // Vamos usar essa flag pra redirecionar para outra página quando o login for bem sucedido
+                    }
+                })
+            }
+            console.log(resp)
         })
         .catch(erro => console.log(erro))
-       }
+}
+
        
 
     handleChange(event) {
@@ -59,9 +49,7 @@ export default class Cadastro extends Component {
     render() {
         if (this.state.usuario.redirectToReferrer === true) {
             return (
-                <Redirect to={{
-                    pathname: "/login"
-                }} />
+                <Redirect to="/login"/>
             )}
             
         return (
@@ -70,13 +58,13 @@ export default class Cadastro extends Component {
                 <input name="username"
                 class="form__input"
                     placeholder = "username"
-                    value={this.state.usuario.username}
+                    // value={this.state.usuario.username}
                     onChange={this.handleChange} /><br></br>
 
                 <input name="password"
                     class="form__input"
                     placeholder = "password"
-                    value={this.state.usuario.password}
+                    // value={this.state.usuario.password}
                     onChange={this.handleChange} /><br></br>
 
                 <button onClick={this.cadastrar}>register</button>
