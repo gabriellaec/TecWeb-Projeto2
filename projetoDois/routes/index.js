@@ -88,7 +88,7 @@ router.post('/adduser', function (req, res) {
 
   console.log(req.body)
   var userName = req.body.username;
-  var userPassword = req.body.userpassword;
+  var userPassword = req.body.password;
   console.log(userName)
   console.log(userPassword)
 
@@ -96,8 +96,9 @@ router.post('/adduser', function (req, res) {
   
   var Users = db.Mongoose.model('usercollection', db.UserSchema,
 'usercollection');
-  var user = new Users({ username: userName, password:
+  var user = new Users({ "username": userName, "password":
 userPassword });
+console.log(user)
   user.save(function (err) {
       if (err) {
           console.log("Error! " + err.message);
@@ -105,6 +106,9 @@ userPassword });
       }
       else {
           console.log("Post saved");
+          res.redirect("userlist");
+
+          console.log(user)
           // res.redirect("userlist");
       }
   });
@@ -243,6 +247,87 @@ request(url, function (err, response, body) {
  dados = "Local: "+ local+ "; Hora: "+ hora
  console.log(jsontosend);
  console.log(current);
+
+ console.log(weather)
+
+// *GET* weather page
+ router.get('/weather', function(req, res, next){
+  res.send(jsontosend);
+});
+
+// *GET* city page
+router.get('/city', function(req, res, next){
+  res.send(local);
+});
+
+   }
+});
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* GET Place. */
+router.post('/forecast', function (req, res, next) {
+  // console.log(req)
+  console.log(req.body)
+
+  let cidade = req.body.City;
+  console.log(cidade)
+
+ 
+let url = `http://api.weatherstack.com/forecast?access_key=f18a154e8af2d05014336d0c78ea763f&query=${cidade}&forecast_days=7`
+let dados ='';
+ 
+// *REQUEST* connect to external api
+request(url, function (err, response, body) {
+ if(err){
+  console.log('error:', error);
+ } else {
+ let weather = JSON.parse(body);
+ //dados = 'Dados Metereológicos para a ${location.name}: -Temperatura: ${current.temperature}ºC%'
+ local = weather.location
+ hora = weather.location.localtime
+ temperatura = weather.current.temperature
+ tempo = weather.current.weather_descriptions
+ icon = weather.current.weather_icons
+ current = weather.current
+ icon=current.weather_icons
+
+ console.log(tempo)
+ console.log(tempo.includes("cloud"))
+
+ if (tempo.includes("sun")){
+   var icon = "https://www.google.com.br/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F455426581041768615%2F&psig=AOvVaw2_NvLkgUL3pnbW1fBDJOGd&ust=1604458151567000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLCz7sOu5ewCFQAAAAAdAAAAABAW"
+ }
+ if( tempo.indexOf("cloud") > -1 ) {
+   console.log("oieeeeeeeee")
+    var icon = "https://www.google.com.br/url?sa=i&url=https%3A%2F%2Fgifer.com%2Fen%2Fsp&psig=AOvVaw0vIRKh9laKqmRDdiQaHue_&ust=1604458757337000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMiYneiw5ewCFQAAAAAdAAAAABA1"
+ }
+ else if (tempo.includes("cloud")){
+  var icon = "https://www.google.com.br/url?sa=i&url=https%3A%2F%2Fgifer.com%2Fen%2Fsp&psig=AOvVaw0vIRKh9laKqmRDdiQaHue_&ust=1604458757337000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMiYneiw5ewCFQAAAAAdAAAAABA1"
+}
+ console.log(icon)
+
+ jsontosend = ({obj1:current,obj2:icon})
+ delete current['weather_icons'];
+
+ icon = undefined;
+ current = JSON.parse(JSON.stringify(current));
+
+ dados = "Local: "+ local+ "; Hora: "+ hora
+ console.log(jsontosend);
+ console.log(current);
+ console.log(tempo);
 
  console.log(weather)
 
