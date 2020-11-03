@@ -5,6 +5,7 @@ import { JsonToTable } from "react-json-to-table";
 import Home from './home'
 import Navbar from "../Navbar";
 import Postlist from "../posts/postlist";
+import Geolocation from './geolocation'
 import '../App.css';
 
 
@@ -109,6 +110,7 @@ render() {
                     <h1>Weather</h1>
 
                     <Home/>
+                    <Geolocation/>
                     <Redirect to= "/weather"  />
                 </div>
                     

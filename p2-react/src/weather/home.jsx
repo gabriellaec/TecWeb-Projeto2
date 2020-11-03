@@ -77,7 +77,7 @@ export default class Home extends Component {
                 
                 <button 
                 onClick={this.changePlace}
-                >changePlace
+                >Change Place
                 
                 </button>
 

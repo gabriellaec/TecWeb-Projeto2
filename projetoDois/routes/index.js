@@ -10,7 +10,6 @@ var where = require('node-where');
 
 
 
-
 //***********POSTS**********//
 
 /* GET Postlist page. */
@@ -205,6 +204,7 @@ req.body.password });
 
 let cidade = 'Miami';
 
+
 /* GET Place. */
 router.post('/place', function (req, res, next) {
   // console.log(req)
@@ -212,7 +212,8 @@ router.post('/place', function (req, res, next) {
 
   let cidade = req.body.City;
   console.log(cidade)
-  
+
+ 
 let url = `http://api.weatherstack.com/current?access_key=f18a154e8af2d05014336d0c78ea763f&query=${cidade}`
 let dados ='';
  
@@ -242,6 +243,8 @@ request(url, function (err, response, body) {
  dados = "Local: "+ local+ "; Hora: "+ hora
  console.log(jsontosend);
  console.log(current);
+
+ console.log(weather)
 
 // *GET* weather page
  router.get('/weather', function(req, res, next){

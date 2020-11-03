@@ -5,6 +5,7 @@ import { JsonToTable } from "react-json-to-table";
 import Home from './home'
 import Navbar from "../Navbar";
 import '../App.css';
+import Geolocation from './geolocation'
 
 export default class City extends Component {
 
@@ -45,6 +46,7 @@ render() {
     <div >
         <Navbar/>
          <Home/>
+         <Geolocation/>
          <br></br>
         <Redirect to= "/city"  />
         <div className="Table"> 
