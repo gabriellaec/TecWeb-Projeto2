@@ -38,7 +38,9 @@ export default class Cadastro extends Component {
 
     handleChange(event) {
         var handleState = (state, event) => {
-            state.usuario[event.target.username] = event.target.value
+            state.usuario[event.target.name] = event.target.value
+            console.log(event.target)
+
             console.log(state)
             return state
         }
@@ -54,7 +56,7 @@ export default class Cadastro extends Component {
             
         return (
             <div class="form__group">
-                <h1>Cadastro</h1>
+                <h1 class="title_login">Cadastro</h1>
                 <input name="username"
                 class="form__input"
                     placeholder = "username"

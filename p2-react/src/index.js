@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-const mysql = require("mysql");
+// const mysql = require("mysql");
 
 // import { Auth0Provider } from '@auth0/auth0-react';
 

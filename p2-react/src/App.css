@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+
 }
 
 .App-header {
@@ -11,6 +12,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding: 50px;
 }
 
 .App-link {
@@ -71,6 +73,8 @@
       align-items: center;
       /* height: 100vh; */
       color: #fff;
+      background-image: url("https://bloximages.chicago2.vip.townnews.com/missoulian.com/content/tncms/assets/v3/editorial/5/aa/5aa9642f-e19b-5cb8-91b8-e07165f99a3b/59a05d725869b.image.jpg?resize=1200%2C800U")
+
     }
     
     .form__label {
@@ -110,8 +114,8 @@
       border: none;
       cursor: pointer;
       border-radius: 3px;
-      padding: 6px;
-      width: 100px;
+      padding: 30px;
+      width: 400px;
       background-color: rgb(22, 86, 97);
       color:white;
       margin-left: 25px;
@@ -131,6 +135,11 @@
   margin-bottom: 50px;
 }
 
+
+.title_login{
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
 
 
     

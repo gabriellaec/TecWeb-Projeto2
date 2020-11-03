@@ -107,7 +107,7 @@ render() {
 
                 <div class='header_weather'>
                     <Navbar/>
-                    <h1>Weather</h1>
+                    <h1 class='title_login'>Weather</h1>
 
                     <Home/>
                     <Geolocation/>

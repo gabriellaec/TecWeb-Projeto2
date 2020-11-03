@@ -82,15 +82,17 @@ export default class Login extends Component {
 
         return (
             <div class="form__group">
-                <h1 >Login</h1>
+                <h1 class="title_login">Login</h1>
                 <input name="username"
+                    class="form__input"
+
                     placeholder = "username"
                     value={this.state.usuario.username}
                     onChange={this.handleChange} /><br></br>
 
                 <input name="password"
-                class = 'input'
-                    placeholder = "password"
+                class="form__input"
+                placeholder = "password"
                     value={this.state.usuario.password}
                     onChange={this.handleChange} /><br></br>
 

@@ -45,6 +45,7 @@ render() {
    
     <div >
         <Navbar/>
+        <h1 class='title_login'>City</h1>
          <Home/>
          <Geolocation/>
          <br></br>
