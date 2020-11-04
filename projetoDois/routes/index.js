@@ -5,7 +5,7 @@ app.use(cors())
 var router = express.Router();
 var unirest = require('unirest');
 let request = require('request');
-const mysql = require("mysql");
+//const mysql = require("mysql");
 var where = require('node-where');
 
 
