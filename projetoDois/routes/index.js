@@ -243,9 +243,22 @@ request(url, function (err, response, body) {
  current = weather.current
  icon=current.weather_icons
 
+cityname=local.name
+description = weather.current.weather_descriptions
+wind = weather.current.wind_speed
+uv = weather.current.uv_index
+day = weather.current.is_day
 
  }
  console.log(icon)
+
+ recjson = ({
+   city: cityname,
+   weather_description: description,
+   windspeed: wind,
+   uv_index: uv,
+   is_day: day
+ })
 
  jsontosend = ({obj1:current,obj2:icon})
  delete current['weather_icons'];
@@ -258,6 +271,9 @@ request(url, function (err, response, body) {
  console.log(current);
 
  console.log(weather)
+ console.log("*"*30);
+
+ console.log(recjson);
 
 // *GET* weather page
  router.get('/weather', function(req, res, next){
@@ -267,6 +283,12 @@ request(url, function (err, response, body) {
 // *GET* city page
 router.get('/city', function(req, res, next){
   res.send(local);
+});
+
+
+// *GET* recommendations page
+router.get('/recommendations', function(req, res, next){
+  res.send(recjson);
 });
 
    }}

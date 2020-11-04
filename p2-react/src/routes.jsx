@@ -12,6 +12,7 @@ import Geolocation from './weather/geolocation'
 import WeatherPage from './weather/weatherPage'
 import CityPage from './weather/cityPage'
 import UserPage from './userpage'
+import Recommendations from './weather/recommendations'
 
 
 //import Teste from './usuarios/teste'
@@ -30,6 +31,7 @@ export default props => (
         <Route path='/weather-page' component={WeatherPage} />
         <Route path='/userpage' component={UserPage} />
         <Route path='/city-page' component={CityPage} />
+        <Route path='/recommendations' component={Recommendations} />
 
         {/* <Route path='/teste' component={Teste} /> */}
         {/* <Redirect from='*' to='/weather' /> */}
