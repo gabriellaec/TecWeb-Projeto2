@@ -30,6 +30,7 @@ export default class Login extends Component {
                 if (Math.floor(resp.status / 100) === 2) { // Checa se o response status code é 2XX(sucesso)
                     this.setState({ usuario: resp })
                     if (resp.data.length === 1) 
+                    
                         console.log(resp)
 
                         var novoid = resp.data[0]
@@ -49,7 +50,8 @@ export default class Login extends Component {
 
     handleChange(event) {
         var handleState = (state, event) => {
-            state.usuario[event.target.username] = event.target.value
+            state.usuario[event.target.name] = event.target.value
+            console.log(state.usuario)
             return state
         }
 
@@ -87,13 +89,13 @@ export default class Login extends Component {
                     class="form__input"
 
                     placeholder = "username"
-                    value={this.state.usuario.username}
+                    // value={this.state.usuario.username}
                     onChange={this.handleChange} /><br></br>
 
                 <input name="password"
                 class="form__input"
                 placeholder = "password"
-                    value={this.state.usuario.password}
+                    // value={this.state.usuario.password}
                     onChange={this.handleChange} /><br></br>
 
                 <button onClick={this.login}>Login</button>

@@ -87,7 +87,7 @@ refresh = () => {
             <div>
 
             <div class='header_weather'>
-            <h1 class='title_login'>Weather</h1>
+            <h1 class='title_login'>Location Information</h1>
             <Navbar/>
                 </div>
                     

@@ -22,7 +22,7 @@ export default class Home extends Component {
     submitForm (e) {
         e.preventDefault()
         if (this.props.history){
-            this.props.history.push('/weather-page'); // <--- The page you want to redirect your user to.
+            this.props.history.push('/city-page'); // <--- The page you want to redirect your user to.
 
         }
       }

@@ -69,8 +69,8 @@ router.get('/newuser', function(req, res) {
 /* GET Userlist page. */
 router.get('/userlist', function(req, res) {
   var db = require("../db");
-  var Users = db.Mongoose.model('usercollection', db.UserSchema,
-'usercollection');
+  var Users = db.Mongoose.model('userslist', db.UserSchema,
+'userslist');
   Users.find({}).lean().exec(
      function (e, docs) {
       res.json(docs);
@@ -89,15 +89,16 @@ router.post('/adduser', function (req, res) {
   console.log(req.body)
   var userName = req.body.username;
   var userPassword = req.body.password;
+  var num = 0;
   console.log(userName)
   console.log(userPassword)
 
   var db = require("../db");
   
-  var Users = db.Mongoose.model('usercollection', db.UserSchema,
-'usercollection');
+  var Users = db.Mongoose.model('userslist', db.UserSchema,
+'userslist');
   var user = new Users({ "username": userName, "password":
-userPassword });
+userPassword, status: 0});
 console.log(user)
   user.save(function (err) {
       if (err) {
@@ -117,8 +118,8 @@ console.log(user)
 
 router.post('/login', async function (req, res) {
   var db = require("../db");
-  var Users = await db.Mongoose.model('usercollection', db.UserSchema,
-      'usercollection');
+  var Users = await db.Mongoose.model('userslist', db.UserSchema,
+      'userslist');
   var userName = req.body.username;
   var userPassword = req.body.password;
   await Users.find({ "username": userName, "password": userPassword }, (err, users) => {
@@ -136,8 +137,8 @@ router.post('/login', async function (req, res) {
 /* GET ONE users. */
 router.get('/user/:id', function (req, res, next) {
   var db = require('../db');
-  var User = db.Mongoose.model('usercollection', db.UserSchema,
-'usercollection');
+  var User = db.Mongoose.model('userslist', db.UserSchema,
+'userslist');
   User.find({ _id: req.params.id }).lean().exec(function (e,
 docs) {
       res.json(docs);
@@ -149,8 +150,8 @@ docs) {
 /* POST ONE users. */
 router.post('/users/', function (req, res, next) {
   var db = require('../db');
-  var User = db.Mongoose.model('usercollection', db.UserSchema,
-'usercollection');
+  var User = db.Mongoose.model('userslist', db.UserSchema,
+'userslist');
   var newuser = new User({ username: req.body.name, password:
 req.body.password });
   newuser.save(function (err) {
@@ -168,8 +169,8 @@ req.body.password });
 // /* PUT ONE user. */
 // router.put('/users/:id', function (req, res, next) {
 //   var db = require('../db');
-//   var User = db.Mongoose.model('usercollection', db.UserSchema,
-// 'usercollection');
+//   var User = db.Mongoose.model('userslist', db.UserSchema,
+// 'userslist');
 //   User.findOneAndUpdate({ _id: req.params.id }, req.body,
 // { upsert: true }, function (err, doc) {
 //       if (err) {
@@ -186,8 +187,8 @@ req.body.password });
 // /* DELETE ONE user. */
 // router.delete('/users/:id', function (req, res, next) {
 //   var db = require('../db');
-//   var User = db.Mongoose.model('usercollection',
-// db.UserSchema, 'usercollection');
+//   var User = db.Mongoose.model('userslist',
+// db.UserSchema, 'userslist');
 //   User.find({ _id: req.params.id }).remove(function (err) {
 //       if (err) {
 //           res.status(500).json({ error: err.message });

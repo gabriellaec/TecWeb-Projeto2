@@ -2,11 +2,6 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/projeto2');
 
 
-var userSchema = new mongoose.Schema({
-    username: String,
-    password: String
-}, { collection: 'usercollection' }
-);
 
 var postSchema = new mongoose.Schema({
     city: String,
@@ -15,6 +10,17 @@ var postSchema = new mongoose.Schema({
     date: Date
 }, { collection: 'postslist' }
 );
+
+var userSchema = new mongoose.Schema({
+    status: Number,
+    favourites: Array,
+    username: String,
+    password: String
+}, { collection: 'userslist' }
+);
+
+
+
 
 
 module.exports = { Mongoose: mongoose, UserSchema: userSchema, PostSchema: postSchema }
