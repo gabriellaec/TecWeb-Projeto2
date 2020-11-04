@@ -9,6 +9,8 @@ import Login from './login'
 import Home from './weather/home'
 import Postlist from './posts/postlist'
 import Geolocation from './weather/geolocation'
+import WeatherPage from './weather/weatherPage'
+import CityPage from './weather/cityPage'
 
 
 //import Teste from './usuarios/teste'
@@ -24,6 +26,8 @@ export default props => (
         <Route path='/home' component={Home} />
         <Route path='/postlist' component={Postlist} />
         <Route path='/geolocation' component={Geolocation} />
+        <Route path='/weather-page' component={WeatherPage} />
+        <Route path='/city-page' component={CityPage} />
 
         {/* <Route path='/teste' component={Teste} /> */}
         {/* <Redirect from='*' to='/weather' /> */}

@@ -16,6 +16,12 @@ export default class Cadastro extends Component {
         this.cadastrar = this.cadastrar.bind(this)
         }
 
+        submitForm (e) {
+            e.preventDefault()
+            this.props.history.push('/login'); // <--- The page you want to redirect your user to.
+          }
+        
+
 
     cadastrar() {
         axios.post('http://localhost:3003/adduser', this.state.usuario)
@@ -57,6 +63,7 @@ export default class Cadastro extends Component {
         return (
             <div class="form__group">
                 <h1 class="title_login">Cadastro</h1>
+                <form onSubmit={this.submitForm.bind(this)}>
                 <input name="username"
                 class="form__input"
                     placeholder = "username"
@@ -69,7 +76,10 @@ export default class Cadastro extends Component {
                     // value={this.state.usuario.password}
                     onChange={this.handleChange} /><br></br>
 
-                <button onClick={this.cadastrar}>register</button>
+                <button onClick={this.cadastrar}>Register</button>
+                <button onClick={this.submitForm.bind(this)}>Return</button>
+
+                </form>
             </div>
         )
     }

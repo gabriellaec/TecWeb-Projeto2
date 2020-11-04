@@ -67,7 +67,7 @@ export default class Login extends Component {
         if (this.state.usuario.redirect === true) {
             return (
                 <Redirect to={{
-                    pathname: "/weather",
+                    pathname: "/home",
                     state: {
                         id: this.state.usuario.id,
                     }}} />

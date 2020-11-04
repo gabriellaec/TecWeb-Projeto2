@@ -42,14 +42,7 @@ render() {
     console.log(this.state.lista.body)
 
     return (
-   
-    <div >
-        <Navbar/>
-        <h1 class='title_login'>City</h1>
-         <Home/>
-         <Geolocation/>
-         <br></br>
-        <Redirect to= "/city"  />
+
         <div className="Table"> 
        
 
@@ -59,7 +52,6 @@ render() {
                 <JsonToTable json={tempos.data} />
                 {/* ===================== */}
         </div>
-    </div>
      );
 }
 }

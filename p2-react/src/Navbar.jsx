@@ -12,10 +12,10 @@ class Navbar extends React.Component{
             <div>
               <ul id="nav">
                 <li>
-                <a  href="/weather" >Weather</a>
+                <a  href="/weather-page" >Weather</a>
                 </li>
                 <li>
-                <a  href="/city" >Cidade</a>
+                <a  href="/city-page" >Cidade</a>
                 </li>
                 <li>
                 <a  href="/login" >Logout</a>

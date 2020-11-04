@@ -227,7 +227,13 @@ request(url, function (err, response, body) {
   console.log('error:', error);
  } else {
  let weather = JSON.parse(body);
+
+ if(typeof weather !== "undefined"){
+
+ 
+
  //dados = 'Dados Metereológicos para a ${location.name}: -Temperatura: ${current.temperature}ºC%'
+ if(typeof weather.location !== "undefined"){
  local = weather.location
  hora = weather.location.localtime
  temperatura = weather.current.temperature
@@ -236,6 +242,8 @@ request(url, function (err, response, body) {
  current = weather.current
  icon=current.weather_icons
 
+
+ }
  console.log(icon)
 
  jsontosend = ({obj1:current,obj2:icon})
@@ -260,7 +268,7 @@ router.get('/city', function(req, res, next){
   res.send(local);
 });
 
-   }
+   }}
 });
 });
 

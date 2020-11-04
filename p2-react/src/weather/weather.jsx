@@ -104,19 +104,7 @@ render() {
     }
             return (
             <div class='div'>
-
-                <div class='header_weather'>
-                    <Navbar/>
-                    <h1 class='title_login'>Weather</h1>
-
-                    <Home/>
-                    <Geolocation/>
-                    <Redirect to= "/weather"  />
-                </div>
-                    
-
             {/* <Navbar/> */}
-
                 {/* <style> #div{ 'background-image': 'url'({bkgr})}; </style> */}
                 <div>
                     

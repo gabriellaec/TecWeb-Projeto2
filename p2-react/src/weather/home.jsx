@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom'
 import { JsonToTable } from "react-json-to-table";
 import '../App.css';
 import Navbar from "../Navbar";
+import { Route } from 'react-router-dom'
 
 
 export default class Home extends Component {
@@ -18,6 +19,14 @@ export default class Home extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.changePlace = this.changePlace.bind(this)
     }
+    submitForm (e) {
+        e.preventDefault()
+        if (this.props.history){
+            this.props.history.push('/weather-page'); // <--- The page you want to redirect your user to.
+
+        }
+      }
+    
 
 
     changePlace() {
@@ -54,6 +63,12 @@ export default class Home extends Component {
     refreshPage() {
         window.location.reload(false);
       }
+      
+refresh = () => {
+    this.setState({
+        redirectToReferrer: true
+    })
+   }
 
 
     render() {
@@ -62,9 +77,14 @@ export default class Home extends Component {
                 <Redirect to= "/weather"  />
         )}
 
+ 
+
 
         return (
             <div class="form__group">
+                <h1 class="title_login">Welcome</h1>
+                <h4 class="title_login">Choose a place to start</h4>
+
                 <input type="text"
                     name="City"
                     class = 'form__input'
@@ -73,15 +93,24 @@ export default class Home extends Component {
                     onChange={this.handleChange} 
                     />
                     <br></br>
-
-                
+                <form onSubmit={this.submitForm.bind(this)}>
                 <button 
-                onClick={this.changePlace}
-                >Change Place
+                type="submit"
+                onClick={
+                    this.changePlace}
+                >Choose Place
                 
                 </button>
+                </form>
+
+      
+                
 
             </div>
         )
+        if (this.state.redirectToReferrer === true) {
+            return (
+                <Redirect to= "/weather"  />
+        )}
     }
 }
