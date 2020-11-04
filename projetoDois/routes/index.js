@@ -15,8 +15,8 @@ var where = require('node-where');
 /* GET Postlist page. */
 router.get('/postlist', function(req, res) {
   var db = require("../db");
-  var Posts = db.Mongoose.model('posts', db.PostSchema,
-'posts');
+  var Posts = db.Mongoose.model('postslist', db.PostSchema,
+'postslist');
   Posts.find({}).lean().exec(
      function (e, docs) {
       res.json(docs);

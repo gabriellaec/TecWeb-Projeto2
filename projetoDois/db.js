@@ -9,10 +9,11 @@ var userSchema = new mongoose.Schema({
 );
 
 var postSchema = new mongoose.Schema({
+    city: String,
     username: String,
     content: String,
     date: Date
-}, { collection: 'posts' }
+}, { collection: 'postslist' }
 );
 
 
