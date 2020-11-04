@@ -8,6 +8,7 @@ class Navbar extends React.Component{
   
     render() {
         return (
+          
           <nav>
             <div>
               <ul id="nav">
@@ -20,6 +21,10 @@ class Navbar extends React.Component{
                 <li>
                 <a  href="/login" >Logout</a>
                 </li>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+
+                <a href="/userpage"><i class="fa fa-fw fa-user"></i> </a>
+
               </ul>
             </div>
             </nav>
