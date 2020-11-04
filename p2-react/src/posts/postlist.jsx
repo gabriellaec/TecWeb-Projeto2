@@ -48,7 +48,7 @@ export default class Postlist extends Component {
     // event.target representa o elemento que causou o trigger do evento que chamou o método (no caso, será o input do username)
 handleChange(event) {
     var handleState = (state, event) => {
-        state.post[event.target.content] = event.target.value
+        state.post[event.target.name] = event.target.value
         return state
     }
     this.setState(handleState(this.state, event))
@@ -84,7 +84,7 @@ render() {
                     <input 
                     placeholder = "New Comment" 
                     class = 'form_posts' 
-                    name="username"
+                    name="content"
                     // value={this.state.post.username}
                     onChange={this.handleChange}
                         />
