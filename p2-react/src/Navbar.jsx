@@ -22,8 +22,15 @@ class Navbar extends React.Component{
                 <a  href="/login" >Logout</a>
                 </li>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+                <div class="dropdown">
+                <a class="dropbtn" href="/userpage"><i class="fa fa-fw fa-user"></i> 
+                <div class="dropdown-content">
+                  <a href="#" > <i class="fa fa-gear">  Config</i></a>
+                  <a  href="/login" >Logout</a>
 
-                <a href="/userpage"><i class="fa fa-fw fa-user"></i> </a>
+                </div>
+                </a>
+                </div>
 
               </ul>
             </div>
