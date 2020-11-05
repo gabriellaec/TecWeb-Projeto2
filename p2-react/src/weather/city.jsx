@@ -6,6 +6,7 @@ import Home from './home'
 import Navbar from "../Navbar";
 import '../App.css';
 import Geolocation from './geolocation'
+import Postlist from "../posts/postlist";
 
 export default class City extends Component {
 
@@ -42,7 +43,7 @@ render() {
     console.log(this.state.lista.body)
 
     return (
-
+<div>
         <div className="Table"> 
        
 
@@ -51,6 +52,13 @@ render() {
                 {/* ===================== */}
                 <JsonToTable json={tempos.data} />
                 {/* ===================== */}
+
+
+                
+        </div>
+        <h1 className = "posts">Activity suggestions</h1>
+                <Postlist/>
+
         </div>
      );
 }

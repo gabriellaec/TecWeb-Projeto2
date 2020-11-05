@@ -113,7 +113,6 @@ refresh = () => {
 
             </div>
             <div >
-
             <Weather/>
             
             </div>        

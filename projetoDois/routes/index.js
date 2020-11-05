@@ -253,6 +253,7 @@ day = weather.current.is_day
  console.log(icon)
 
  recjson = ({
+   temperature: temperatura,
    city: cityname,
    weather_description: description,
    windspeed: wind,

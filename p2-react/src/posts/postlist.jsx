@@ -78,7 +78,6 @@ render() {
     return (
         <div>
         <div>
-        <h1>Comments</h1>
 
             <p >
                     <input 

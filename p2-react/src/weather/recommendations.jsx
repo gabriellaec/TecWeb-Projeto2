@@ -102,11 +102,14 @@ render() {
 
     var urlimg
     var bkgr
+    var temperature
 
 
 
     // var urlimg;
     if((typeof tempos !== "undefined") ){
+        temperature = tempos.temperature
+
        city = tempos.city
        weather_description = (tempos["weather_description"]).toString()
        windspeed = (tempos["windspeed"])
@@ -236,7 +239,9 @@ render() {
 
                 </div>
 
+
                     <h3> {weather_description}</h3>
+                    <h4> Temperature: {temperature} C</h4>
 
 
                     <h5 >UV index: {uv_index}</h5>
@@ -252,6 +257,15 @@ render() {
                     </div> 
         
                 </div>
+
+                <div> 
+                    <h1 className = "posts">What to do?</h1>
+                    <h1 className = "posts">What to wear?</h1>
+                    <h1 className = "posts">Users' Suggestions</h1>
+
+                </div>
+                <Postlist/>
+
                 
             </div>
             );
