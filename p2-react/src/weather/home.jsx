@@ -22,7 +22,7 @@ export default class Home extends Component {
     submitForm (e) {
         e.preventDefault()
         if (this.props.history){
-            this.props.history.push('/city-page'); // <--- The page you want to redirect your user to.
+            this.props.history.push('/recommendations'); // <--- The page you want to redirect your user to.
 
         }
       }
@@ -34,14 +34,22 @@ export default class Home extends Component {
         axios.post('http://localhost:3003/place', this.state.city )
             .then(resp => {
                 if (Math.floor(resp.status / 100) === 2) { // Checa se o response status code é 2XX(sucesso)
+                  
                     this.setState((state) => {
+                        console.log(state.lista)
+                       
                         return {
                             lista: [...state.lista, state.city],
                             city: {name: ''},
                             redirectToReferrer: true // Vamos usar essa flag pra redirecionar para outra página quando o login for bem sucedido
+
+                            
                         }
+                        
+                        
                     })
                 }
+                
                 console.log(resp)
             })
             .catch(erro => console.log(erro))
@@ -76,6 +84,11 @@ refresh = () => {
             return (
                 <Redirect to= "/weather"  />
         )}
+
+        
+        console.log(this.lista)
+
+        // 
 
  
 

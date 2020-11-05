@@ -120,6 +120,9 @@ render() {
        uv_index = (tempos["uv_index"])
        is_day = (tempos["is_day"])
 
+       localStorage.setItem("currentCity",JSON.stringify(city));
+
+
        uv_indexrel=(10-uv_index)*10
        percentage = (uv_index*10).toString()+"%"
        uv_str2=uv_indexrel.toString()

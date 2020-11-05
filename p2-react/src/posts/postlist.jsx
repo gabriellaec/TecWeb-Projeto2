@@ -9,12 +9,15 @@ export default class Postlist extends Component {
     constructor(props) {
         super(props)
         const nomeusuario = localStorage.getItem("username");
+        const place = localStorage.getItem("currentCity");
+        console.log(place)
         var result = nomeusuario.substring(1, nomeusuario.length-1);
+        var resultplace = place.substring(1, place.length-1);
 
         // Inicializando o State com alguns valores para testarmos
         this.state = {lista: [
-            {username: 'mrbrightside', content: 'oi', date: "2020-11-02T19:18:51.373Z"},
-        ], post: {username: result, content: '', date: ''}}
+            {username: 'mrbrightside', content: 'oi', date: "2020-11-02T19:18:51.373Z", city: "Nulles"},
+        ], post: {username: result, content: '', date: '', city: resultplace}}
 
         // Fazendo a requisição assíncrona do GET lista de usuários e atualizando o state
         axios.get('http://localhost:3003/postlist')

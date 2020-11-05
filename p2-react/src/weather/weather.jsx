@@ -63,6 +63,7 @@ export default class Weather extends Component {
 
 render() {
 
+
     // if (this.state.redirectToReferrer === true) {
     //     return (
     //         <Redirect to="/weather"/>
@@ -91,9 +92,11 @@ render() {
         console.log(tempos['obj1'])
         var p = tempos['obj1']
         var bkgr = tempos['obj2']
+        var place = tempos['obj3']
         urlimg = "url('"+bkgr+ "');"
         // const image = document.getElementById("img");
         // image.src=urlimg
+        localStorage.setItem("currentCity",JSON.stringify(place));
 
         console.log(urlimg)
 
@@ -112,6 +115,7 @@ render() {
 
                 </div>
                 <div className="Table"> 
+                <h1>{place}</h1>
                     {/* ===================== */}
                         {/* HOW TO USE IT         */}
                         {/* ===================== */}

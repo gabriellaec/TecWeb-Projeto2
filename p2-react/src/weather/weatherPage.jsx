@@ -77,6 +77,10 @@ refresh = () => {
                 <Redirect to= "/weather-page"  />
         )}
 
+        const place = localStorage.getItem("currentCity");
+        var result = place.substring(1, place.length-1);
+
+
       
 
  
@@ -86,6 +90,7 @@ refresh = () => {
             <div>
 
             <div class='header_weather'>
+        <h1>{result}</h1>
             <h1 class='title_login'>Weather</h1>
             <Navbar/>
                 </div>

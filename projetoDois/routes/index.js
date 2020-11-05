@@ -29,15 +29,16 @@ router.post('/addpost', function (req, res) {
   console.log(req.body)
   var content = req.body.content;
   var userName = req.body.username;
+  var cityName = req.body.city;
   console.log(userName)
   console.log(content)
 
   var db = require("../db");
   
-  var Posts = db.Mongoose.model('posts', db.PostSchema,
-'posts');
+  var Posts = db.Mongoose.model('postslist', db.PostSchema,
+'postslist');
   var user = new Posts({ username: userName, content:
-content, date: new Date() });
+content, city: cityName, date: new Date() });
   user.save(function (err) {
       if (err) {
           console.log("Error! " + err.message);
@@ -261,7 +262,7 @@ day = weather.current.is_day
    is_day: day
  })
 
- jsontosend = ({obj1:current,obj2:icon})
+ jsontosend = ({obj1:current,obj2:icon, obj3:cityname})
  delete current['weather_icons'];
 
  icon = undefined;
@@ -285,7 +286,6 @@ day = weather.current.is_day
 router.get('/city', function(req, res, next){
   res.send(local);
 });
-
 
 // *GET* recommendations page
 router.get('/recommendations', function(req, res, next){
