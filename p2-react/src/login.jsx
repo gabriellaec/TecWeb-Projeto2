@@ -41,11 +41,17 @@ export default class Login extends Component {
                             redirect: true,
                         }
                         this.setState({ usuario: json })
+                        localStorage.setItem("currentUser",JSON.stringify(this.state.usuario.id));
+
                         return;
                     } else {
                         return;
-                    }})
+                    }
+                    
+                }
+                )
             .catch(erro => console.log(erro))
+            
     }
 
     handleChange(event) {
@@ -63,6 +69,8 @@ export default class Login extends Component {
             cadastroRed: true,
         }
         this.setState({ usuario: semLogin })
+
+
     }
 
     render() {

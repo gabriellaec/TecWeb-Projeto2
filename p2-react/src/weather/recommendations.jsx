@@ -8,6 +8,7 @@ import Postlist from "../posts/postlist";
 import Geolocation from './geolocation'
 import '../App.css';
 import './chart.css'
+// import state.usuario from '../login'
 
 export default class Recommendations extends Component {
     constructor(props) {
@@ -104,6 +105,9 @@ render() {
     var bkgr
     var temperature
 
+    const loggedInUser = localStorage.getItem("currentUser");
+
+
 
 
     // var urlimg;
@@ -132,6 +136,8 @@ render() {
         console.log(windspeed)
         console.log(uv_index)
         console.log(is_day)
+
+        console.log(this.state.usuario)
 
         if (windspeed<12){
             wind_val = "LOW".fontcolor("green")
@@ -168,7 +174,7 @@ render() {
             uv_rec = "Don't forget to wear sunscreen!!!"
 
         }
-        if (weather_description.includes("yes")){
+        if (is_day.includes("yes")){
             urlimg = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ8o7i7qmrkp8e2Jneynhz_82Wrg4dytetvLA&usqp=CAU"
         }else{
             urlimg = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRLDgJS1FUkI1M3yXdr72kFLF72Jab4gSflUQ&usqp=CAU"
@@ -181,7 +187,7 @@ render() {
         var warning2
         var warning3
 
-        if (is_day.includes("Rain")){
+        if ( (weather_description.includes("Rain")) || (weather_description.includes("rain"))) {
             warning = "Don't forget your umbrella!"
         }if (windspeed>=50){
             warning2 = "Hurricane"
@@ -234,6 +240,7 @@ render() {
                     <h2 style={ warningStyle()}> {warningtext}</h2>
 
                     <div>
+                        <p>{loggedInUser}</p>
                     
                     <img src = {urlimg} id = "image" alt="weather" width="320" height="220"/>
 
