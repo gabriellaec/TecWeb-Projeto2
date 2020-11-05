@@ -240,7 +240,7 @@ render() {
                     <h2 style={ warningStyle()}> {warningtext}</h2>
 
                     <div>
-                        <p>{loggedInUser}</p>
+                        {/* <p>{loggedInUser}</p> */}
                     
                     <img src = {urlimg} id = "image" alt="weather" width="320" height="220"/>
 

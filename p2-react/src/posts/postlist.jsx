@@ -8,10 +8,13 @@ export default class Postlist extends Component {
 
     constructor(props) {
         super(props)
+        const nomeusuario = localStorage.getItem("username");
+        var result = nomeusuario.substring(1, nomeusuario.length-1);
+
         // Inicializando o State com alguns valores para testarmos
         this.state = {lista: [
             {username: 'mrbrightside', content: 'oi', date: "2020-11-02T19:18:51.373Z"},
-        ], post: {username: '', content: '', date: ''}}
+        ], post: {username: result, content: '', date: ''}}
 
         // Fazendo a requisição assíncrona do GET lista de usuários e atualizando o state
         axios.get('http://localhost:3003/postlist')
@@ -26,9 +29,13 @@ export default class Postlist extends Component {
 
          this.handleChange = this.handleChange.bind(this)
          this.cadastrar = this.cadastrar.bind(this)
+
     }
 
+
     cadastrar() {
+        const nomeusuario = localStorage.getItem("username");
+
         axios.post('http://localhost:3003/addpost', this.state.post)
             .then(resp => {
                 if(Math.floor(resp.status/100) === 2) {
@@ -54,14 +61,11 @@ handleChange(event) {
     this.setState(handleState(this.state, event))
 }
 
+
+
 render() {
 
-    // if (this.state.redirectToReferrer === true) {
-    //     return (
-    //         <Redirect to="/postlist"/>
-    //     )
-    // }
-
+   
     var posts = this.state.lista
     console.log(this.state)
     var liposts = posts.map(post => {
@@ -78,6 +82,7 @@ render() {
     return (
         <div>
         <div>
+        <h1>Comments</h1>
 
             <p >
                     <input 
@@ -86,15 +91,16 @@ render() {
                     name="content"
                     // value={this.state.post.username}
                     onChange={this.handleChange}
+
                         />
                 </p>
-                <p class = "sendB">
+                <p>
                     <button onClick={this.cadastrar}>Send</button>
                 </p>
         </div>
-        <div class = 'comments'>
+        <div>
 
-            <ul > {liposts} </ul><p></p>
+            <ul> {liposts} </ul><p></p>
             {/* <JsonToTable json={posts} /> */}
 
             

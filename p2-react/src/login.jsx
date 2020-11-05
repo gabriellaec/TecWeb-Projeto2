@@ -34,7 +34,8 @@ export default class Login extends Component {
                         console.log(resp)
 
                         var novoid = resp.data[0]
-                        console.log(resp.data)
+                        console.log(novoid['username'])
+                        localStorage.setItem("username",JSON.stringify(novoid['username']));
 
                         const json = {
                             id: novoid._id,
@@ -69,7 +70,7 @@ export default class Login extends Component {
             cadastroRed: true,
         }
         this.setState({ usuario: semLogin })
-
+        
 
     }
 

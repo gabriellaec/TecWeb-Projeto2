@@ -28,7 +28,7 @@ router.get('/postlist', function(req, res) {
 router.post('/addpost', function (req, res) {
   console.log(req.body)
   var content = req.body.content;
-  var userName = "user";
+  var userName = req.body.username;
   console.log(userName)
   console.log(content)
 
