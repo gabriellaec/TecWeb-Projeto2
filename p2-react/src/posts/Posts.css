@@ -1,5 +1,6 @@
 ul{
     list-style:none;
+    
   }
   
   ul li{
@@ -40,7 +41,7 @@ ul{
     font-family: 'Roboto', sans-serif;
     color: #333;
     font-size: 1.2rem;
-    margin: 0 auto;
+    margin: 1rem;
     padding: 0.3rem 1.3rem;
     border-radius: 0.2rem;
     background-color: rgb(255, 255, 255);
@@ -73,3 +74,11 @@ ul{
    
   }
 
+.sendB {
+  padding: 1rem;
+}
+
+.comments {
+  display: inline-flex;
+  justify-content: center;
+}

@@ -106,9 +106,9 @@ render() {
             <div class='div'>
             {/* <Navbar/> */}
                 {/* <style> #div{ 'background-image': 'url'({bkgr})}; </style> */}
-                <div>
+                <div >
                     
-                    <img src = {bkgr} id = "image" alt="weather" width="320" height="220"/>
+                    <img src = {bkgr} class = 'imagem' id = "image" alt="weather" width="320" height="220"/>
 
                 </div>
                 <div className="Table"> 

@@ -89,13 +89,13 @@ render() {
                     onChange={this.handleChange}
                         />
                 </p>
-                <p>
+                <p class = "sendB">
                     <button onClick={this.cadastrar}>Send</button>
                 </p>
         </div>
-        <div>
+        <div class = 'comments'>
 
-            <ul> {liposts} </ul><p></p>
+            <ul > {liposts} </ul><p></p>
             {/* <JsonToTable json={posts} /> */}
 
             
