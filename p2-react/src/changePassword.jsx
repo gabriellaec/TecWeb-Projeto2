@@ -73,10 +73,10 @@ refresh = () => {
 
 
     render() {
-        if (this.state.redirectToReferrer === true) {
-            return (
-                <Redirect to= "/weather"  />
-        )}
+        // if (this.state.redirectToReferrer === true) {
+        //     return (
+        //         <Redirect to= "/weather"  />
+        // )}
 
  
 

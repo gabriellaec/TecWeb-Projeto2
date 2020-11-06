@@ -6,7 +6,7 @@ import Home from './home'
 import Navbar from "../Navbar";
 import '../App.css';
 import Geolocation from './geolocation'
-import Postlist from "../posts/postlist";
+import Postscity from "../posts/postscity";
 
 export default class City extends Component {
 
@@ -64,7 +64,7 @@ render() {
                 
         </div>
         <h1 className = "posts">Activity suggestions</h1>
-                <Postlist/>
+                <Postscity/>
 
         </div>
      );

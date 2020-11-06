@@ -59,9 +59,9 @@ content, city: cityName, date: new Date() });
 router.put('/userstatus/:id', function (req, res, next) {
   console.log("Update status")
   var db = require('../db');
-  var Post = db.Mongoose.model('postslist', db.PostSchema,
-'postslist');
-Post.findOneAndUpdate({ _id: req.params.id }, req.body,
+  var User = db.Mongoose.model('userslist', db.UserSchema,
+'userslist');
+User.findOneAndUpdate({ _id: req.params.id }, req.body,
 { upsert: true }, function (err, doc) {
       if (err) {
           res.status(500).json({ error: err.message });
@@ -72,6 +72,51 @@ Post.findOneAndUpdate({ _id: req.params.id }, req.body,
       res.end();
       console.log("Updated")
 
+  });
+});
+
+
+
+
+
+/* GET Postlist page. */
+router.get('/postlistcity', function(req, res) {
+  var db = require("../db");
+  var Posts = db.Mongoose.model('postscity', db.CitySchema,
+'postscity');
+var cityname = req.query.city
+  Posts.find({city: cityname}).lean().exec(
+     function (e, docs) {
+      res.json(docs);
+      res.end();  });
+});
+
+
+
+/* POST to Add User Service */
+router.post('/addpostcity', function (req, res) {
+  console.log(req.body)
+  var content = req.body.content;
+  var userName = req.body.username;
+  var cityName = req.body.city;
+  console.log(userName)
+  console.log(content)
+
+  var db = require("../db");
+  
+  var Posts = db.Mongoose.model('postscity', db.CitySchema,
+'postscity');
+  var user = new Posts({ username: userName, content:
+content, city: cityName, date: new Date() });
+  user.save(function (err) {
+      if (err) {
+          console.log("Error! " + err.message);
+          return err;
+      }
+      else {
+          console.log("Post saved");
+          // res.redirect("userlist");
+      }
   });
 });
 

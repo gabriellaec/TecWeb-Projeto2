@@ -76,19 +76,7 @@ export default class Postlist extends Component {
         var url = 'http://localhost:3003/userstatus/'+result
 
         axios.put(url, (currentStatus+1).toString())
-            .then(resp => {
-                if(Math.floor(resp.status/100) === 2) {
-                    this.setState((state) => {
-                        return {
-                            lista: [...state.lista, state.post],
-                             post: {status: (currentStatus+1).toString()},
-                            // redirectToReferrer: true // Vamos usar essa flag pra redirecionar para outra página quando o login for bem sucedido
-                        }
-                    })
-                }
-                console.log(resp)
-            })
-            .catch(erro => console.log(erro))
+        .then(res => console.log(res))
     }
 
 
