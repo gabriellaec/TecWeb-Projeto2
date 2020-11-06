@@ -47,6 +47,8 @@ export default class UserPage extends Component {
 
     render() {
         const loggedInUser = localStorage.getItem("currentUser");
+        const currentStatus = localStorage.getItem("currentStatus");
+        
         var user = this.state.lista.data
         // var tempos = this.state.lista.data
         var userinfo =''
@@ -68,6 +70,7 @@ export default class UserPage extends Component {
                 <Navbar/>
                 <h1 class="title_login">Hello, {username}!</h1>
                 <h4>Current password: {password}</h4>
+                <h4>Status: {currentStatus}</h4>
                 <ChangePassword/>
 
             </div>)}

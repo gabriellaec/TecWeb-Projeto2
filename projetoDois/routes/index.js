@@ -53,6 +53,30 @@ content, city: cityName, date: new Date() });
 });
 
 
+
+
+/* PUT  user STATUS (com posts). */
+router.put('/userstatus/:id', function (req, res, next) {
+  console.log("Update status")
+  var db = require('../db');
+  var Post = db.Mongoose.model('postslist', db.PostSchema,
+'postslist');
+Post.findOneAndUpdate({ _id: req.params.id }, req.body,
+{ upsert: true }, function (err, doc) {
+      if (err) {
+          res.status(500).json({ error: err.message });
+          res.end();
+          return;
+      }
+      res.json(req.body);
+      res.end();
+      console.log("Updated")
+
+  });
+});
+
+
+
 //******************************************************** */
 // *GET* test
 router.get('/', function(req, res, next){
@@ -168,22 +192,22 @@ req.body.password });
 });
 
 
-// /* PUT ONE user. */
-// router.put('/users/:id', function (req, res, next) {
-//   var db = require('../db');
-//   var User = db.Mongoose.model('userslist', db.UserSchema,
-// 'userslist');
-//   User.findOneAndUpdate({ _id: req.params.id }, req.body,
-// { upsert: true }, function (err, doc) {
-//       if (err) {
-//           res.status(500).json({ error: err.message });
-//           res.end();
-//           return;
-//       }
-//       res.json(req.body);
-//       res.end();
-//   });
-// });
+/* PUT ONE user. */
+router.put('/users/:id', function (req, res, next) {
+  var db = require('../db');
+  var User = db.Mongoose.model('userslist', db.UserSchema,
+'userslist');
+  User.findOneAndUpdate({ _id: req.params.id }, req.body,
+{ upsert: true }, function (err, doc) {
+      if (err) {
+          res.status(500).json({ error: err.message });
+          res.end();
+          return;
+      }
+      res.json(req.body);
+      res.end();
+  });
+});
 
 
 // /* DELETE ONE user. */

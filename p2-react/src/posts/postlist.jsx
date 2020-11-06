@@ -42,6 +42,7 @@ export default class Postlist extends Component {
 
          this.handleChange = this.handleChange.bind(this)
          this.cadastrar = this.cadastrar.bind(this)
+         this.incStatus = this.incStatus.bind(this)
 
     }
 
@@ -64,6 +65,33 @@ export default class Postlist extends Component {
             })
             .catch(erro => console.log(erro))
     }
+
+
+
+    incStatus() {
+        const currentStatus = (localStorage.getItem("currentStatus")).parseInt();
+        const loggedInUser = localStorage.getItem("currentUser");
+        var result = loggedInUser.substring(1, loggedInUser.length-1);
+
+        var url = 'http://localhost:3003/userstatus/'+result
+
+        axios.put(url, (currentStatus+1).toString())
+            .then(resp => {
+                if(Math.floor(resp.status/100) === 2) {
+                    this.setState((state) => {
+                        return {
+                            lista: [...state.lista, state.post],
+                             post: {status: (currentStatus+1).toString()},
+                            // redirectToReferrer: true // Vamos usar essa flag pra redirecionar para outra página quando o login for bem sucedido
+                        }
+                    })
+                }
+                console.log(resp)
+            })
+            .catch(erro => console.log(erro))
+    }
+
+
 
     // event.target representa o elemento que causou o trigger do evento que chamou o método (no caso, será o input do username)
 handleChange(event) {
@@ -92,6 +120,14 @@ render() {
             </ul>
         )
     })
+
+    function click(){
+        this.cadastrar()
+        this.incStatus()
+
+    }
+
+
     return (
         <div>
         <div>
@@ -107,9 +143,13 @@ render() {
 
                         />
                 </p>
+                <form onSubmit={this.incStatus}>
                 <p>
-                    <button onClick={this.cadastrar}>Send</button>
+                    <button
+                    type="submit"
+                    onClick={this.cadastrar}>Send</button>
                 </p>
+            </form>
         </div>
         <div>
 

@@ -36,13 +36,14 @@ export default class Login extends Component {
                         var novoid = resp.data[0]
                         console.log(novoid['username'])
                         localStorage.setItem("username",JSON.stringify(novoid['username']));
-
+                        var stat = novoid['status']
                         const json = {
                             id: novoid._id,
                             redirect: true,
                         }
                         this.setState({ usuario: json })
                         localStorage.setItem("currentUser",JSON.stringify(this.state.usuario.id));
+                        localStorage.setItem("currentStatus",JSON.stringify(stat));
 
                         return;
                     } else {

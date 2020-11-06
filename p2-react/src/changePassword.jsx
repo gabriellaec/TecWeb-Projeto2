@@ -28,7 +28,11 @@ export default class ChangePassword extends Component {
 
     changePlace() {
         // Fazendo a requisição assíncrona do GET lista de usuários e atualizando o state
-        axios.post('http://localhost:3003/place', this.state.user )
+        const loggedInUser = localStorage.getItem("currentUser");
+        var result = loggedInUser.substring(1, loggedInUser.length-1);
+        var url = 'http://localhost:3003/users/'+result
+        
+        axios.put(url, this.state.user )
             .then(resp => {
                 if (Math.floor(resp.status / 100) === 2) { // Checa se o response status code é 2XX(sucesso)
                     this.setState((state) => {
@@ -81,7 +85,7 @@ refresh = () => {
             <div class="form__group">
 
                 <input type="text"
-                    name="user"
+                    name="password"
                     class = 'form__input'
                     placeholder = "New password"
                     // value={this.state.user.password}
