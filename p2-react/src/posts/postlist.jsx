@@ -10,9 +10,15 @@ export default class Postlist extends Component {
         super(props)
         const nomeusuario = localStorage.getItem("username");
         const place = localStorage.getItem("currentCity");
-        console.log(place)
+
         var result = nomeusuario.substring(1, nomeusuario.length-1);
-        var resultplace = place.substring(1, place.length-1);
+        if (place){
+            var resultplace = place.substring(1, place.length-1);
+
+        console.log(place)
+            console.log(resultplace)
+
+        }
 
         // Inicializando o State com alguns valores para testarmos
         this.state = {lista: [
@@ -20,7 +26,11 @@ export default class Postlist extends Component {
         ], post: {username: result, content: '', date: '', city: resultplace}}
 
         // Fazendo a requisição assíncrona do GET lista de usuários e atualizando o state
-        axios.get('http://localhost:3003/postlist')
+        axios.get('http://localhost:3003/postlist'
+        , {
+            params: {
+              city: resultplace
+            }})
             .then(resp => {
                 if(Math.floor(resp.status/100) === 2) { // Checa se o response status code é 2XX (sucesso)
                     this.setState({lista: resp.data})

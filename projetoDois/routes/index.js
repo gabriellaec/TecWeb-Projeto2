@@ -17,7 +17,8 @@ router.get('/postlist', function(req, res) {
   var db = require("../db");
   var Posts = db.Mongoose.model('postslist', db.PostSchema,
 'postslist');
-  Posts.find({}).lean().exec(
+var cityname = req.query.city
+  Posts.find({city: cityname}).lean().exec(
      function (e, docs) {
       res.json(docs);
       res.end();  });
