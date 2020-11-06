@@ -70,8 +70,9 @@ export default class UserPage extends Component {
             <div >
                 <Navbar/>
                 <h1 class="title_login">Hello, {username}!</h1>
+                <h2>Change Password</h2>
                 <h4>Current password: {password}</h4>
-                <h4>Status: {currentStatus}</h4>
+                {/* <h4>Status: {currentStatus}</h4> */}
                 <ChangePassword/>
                 <DeleteAccount/>
 

@@ -254,9 +254,11 @@ render() {
                     <div>
                         {/* <p>{loggedInUser}</p> */}
                     
-                    <img src = {urlimg} id = "image" alt="weather" width="320" height="220"/>
 
                 </div>
+
+                <div class='divisao2'>
+                <img src = {urlimg} id = "image" alt="weather" width="320" height="220"/>
 
 
                     <h3> {weather_description}</h3>
@@ -274,6 +276,8 @@ render() {
                     <div class="container"> 
                         <div class="skill html"  style={ windStyle()}>{windstr}</div> 
                     </div> 
+
+                    </div>
         
                 </div>
 
