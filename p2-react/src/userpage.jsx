@@ -6,6 +6,7 @@ import './App.css';
 import { Route } from 'react-router-dom'
 import Navbar from "./Navbar";
 import ChangePassword from "./changePassword";
+import deleteAccount from "./deleteAccount";
 
 
 export default class UserPage extends Component {
@@ -69,6 +70,9 @@ export default class UserPage extends Component {
                 <h1 class="title_login">Hello, {username}!</h1>
                 <h4>Current password: {password}</h4>
                 <ChangePassword/>
+                
+                <deleteAccount/>
+
 
             </div>)}
 }

@@ -185,21 +185,34 @@ req.body.password });
 
 
 // /* DELETE ONE user. */
-// router.delete('/users/:id', function (req, res, next) {
-//   var db = require('../db');
-//   var User = db.Mongoose.model('userslist',
-// db.UserSchema, 'userslist');
-//   User.find({ _id: req.params.id }).remove(function (err) {
-//       if (err) {
-//           res.status(500).json({ error: err.message });
-//           res.end();
-//           return;
-//       }
-//       res.json({success: true});
-//       res.end();
-//   });
-// });
+router.delete('/users/:id', function (req, res, next) {
+  var db = require('../db');
+  var User = db.Mongoose.model('userslist',
+db.UserSchema, 'userslist');
+  User.find({ _id: req.params.id }).remove(function (err) {
+      if (err) {
+          res.status(500).json({ error: err.message });
+          res.end();
+          return;
+      }
+      res.json({success: true});
+      res.end();
+  });
+});
 
+// /* UPDATE ONE user. */
+//router.route("/update").put(function(req, res) {
+//  myteam.updateOne({ name: "Sergio Ramos" }, { club: "Real Madrid" }, function(
+//    err,
+//    result
+//  ) {
+//    if (err) {
+//      res.send(err);
+//    } else {
+//      res.json(result);
+//    }
+//  });
+//});
 
 //***********USERS**********//
 
