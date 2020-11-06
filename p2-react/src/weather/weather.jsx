@@ -125,7 +125,6 @@ render() {
                 </div>
                 <div  className = "posts">
                 <h1>How's the weather there?</h1>
-
                 <Postlist/>
                 </div>
             </div>

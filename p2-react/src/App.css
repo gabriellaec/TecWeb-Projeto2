@@ -190,3 +190,14 @@
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
+.temp{
+  font-family: "Snell Roundhand", "Brush Script MT", "Brush Script Std", cursive
+}
+
+.divisao{
+  margin-top: 100px;
+  margin-bottom: 100px;
+
+}

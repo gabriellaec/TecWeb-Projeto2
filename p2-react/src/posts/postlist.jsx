@@ -23,7 +23,11 @@ export default class Postlist extends Component {
         // Inicializando o State com alguns valores para testarmos
         this.state = {lista: [
             {username: 'mrbrightside', content: 'oi', date: "2020-11-02T19:18:51.373Z", city: "Nulles"},
-        ], post: {username: result, content: '', date: '', city: resultplace}}
+        ], post: {username: result, content: '', date: '', city: resultplace}
+        , 
+            inputValue: "0"
+          
+    }
 
         // Fazendo a requisição assíncrona do GET lista de usuários e atualizando o state
         axios.get('http://localhost:3003/postlist'
@@ -99,7 +103,6 @@ render() {
     console.log(this.state)
     var liposts = posts.map(post => {
         return (
-    
             
             <ul>
             <li key={post.date}>{"Date: "+ (post.date).slice(0, 10) +" - Time: "+ (post.date).slice(11, 16)}</li>
@@ -109,17 +112,53 @@ render() {
         )
     })
 
+
+    var postsReverse = posts.reverse();
+    console.log(postsReverse)
+    var lipostsReverse = postsReverse.map(postReverse => {
+        
+        
+        return (
+    
+            
+            <ul>
+            <li key={postReverse.date}>{"Date: "+ (postReverse.date).slice(0, 10) +" - Time: "+ (postReverse.date).slice(11, 16)}</li>
+            <li key={postReverse.username}>{postReverse.username}</li>
+            <li key={postReverse.content}>{postReverse.content}</li>
+            </ul>
+        )
+    })
+
+
+    var lista
+    var tag
+    if (this.state.inputValue === "0"){
+        lista = lipostsReverse
+        tag = "Least recent"
+    }else{
+        lista = liposts
+        tag = "Most recent"
+
+    }
+
+
     function click(){
         this.cadastrar()
         this.incStatus()
 
     }
 
+    function reverse(){
+        this.cadastrar()
+        this.incStatus()
+
+    }
+
+
 
     return (
         <div>
         <div>
-        <h1>Comments</h1>
 
             <p >
                     <input 
@@ -139,9 +178,28 @@ render() {
                 </p>
             </form>
         </div>
+
+        Sort by:      <input
+        type="button"
+        name="someName"
+        value={tag}
+        onClick={() =>
+         this.state.inputValue === "0"
+         ? this.setState({
+         inputValue: "1"
+         })
+         : 
+        this.setState({
+        inputValue: "0"
+        })
+        }
+         className="btn btn-success"
+      />
+
+
         <div>
 
-            <ul> {liposts} </ul><p></p>
+            <ul> {lista} </ul><p></p>
             {/* <JsonToTable json={posts} /> */}
 
             

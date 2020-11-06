@@ -4,10 +4,11 @@ import { Redirect } from 'react-router-dom'
 import { JsonToTable } from "react-json-to-table";
 import Home from './home'
 import Navbar from "../Navbar";
-import Postlist from "../posts/postlist";
+import Postsactivities from "../posts/postsactivities";
 import Geolocation from './geolocation'
 import '../App.css';
 import './chart.css'
+import Activities from './activities';
 // import state.usuario from '../login'
 
 export default class Recommendations extends Component {
@@ -104,6 +105,7 @@ render() {
     var urlimg
     var bkgr
     var temperature
+    var status = "0"
 
     const loggedInUser = localStorage.getItem("currentUser");
 
@@ -113,6 +115,12 @@ render() {
     // var urlimg;
     if((typeof tempos !== "undefined") ){
         temperature = tempos.temperature
+
+        if (temperature<=16){
+            status = "cold"
+        }else {
+            status = "warm"
+        }
 
        city = tempos.city
        weather_description = (tempos["weather_description"]).toString()
@@ -192,6 +200,7 @@ render() {
 
         if ( (weather_description.includes("Rain")) || (weather_description.includes("rain"))) {
             warning = "Don't forget your umbrella!"
+            status = "rain"
         }if (windspeed>=50){
             warning2 = "Hurricane"
         }if (uv_index>=9){
@@ -269,12 +278,10 @@ render() {
                 </div>
 
                 <div> 
-                    <h1 className = "posts">What to do?</h1>
-                    <h1 className = "posts">What to wear?</h1>
-                    <h1 className = "posts">Users' Suggestions</h1>
+                    <Activities status={status}/>
 
                 </div>
-                <Postlist/>
+                <Postsactivities/>
 
                 
             </div>

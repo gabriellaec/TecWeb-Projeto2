@@ -31,7 +31,19 @@ var userSchema = new mongoose.Schema({
 
 
 
-module.exports = { Mongoose: mongoose, UserSchema: userSchema, PostSchema: postSchema, CitySchema: citySchema  }
+var activitiesSchema = new mongoose.Schema({
+    city: String,
+    username: String,
+    content: String,
+    date: Date
+}, { collection: 'postsactivities' }
+);
+
+
+
+
+
+module.exports = { Mongoose: mongoose, UserSchema: userSchema, PostSchema: postSchema, CitySchema: citySchema, ActivitiesSchema: activitiesSchema  }
 
 
 
