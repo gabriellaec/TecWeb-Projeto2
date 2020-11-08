@@ -63,7 +63,6 @@ render() {
 
                 
         </div>
-        <h1 className = "posts">Activity suggestions</h1>
                 <Postscity/>
 
         </div>

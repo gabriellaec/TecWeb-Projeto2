@@ -149,7 +149,7 @@ render() {
     return (
         <div>
         <div>
-        <h1>Comments</h1>
+        <h1 class="posts">Places to go</h1>
 
             <p >
                     <input 

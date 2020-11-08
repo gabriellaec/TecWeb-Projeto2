@@ -15,6 +15,8 @@ export default class ChangePassword extends Component {
 
         this.handleChange = this.handleChange.bind(this)
         this.changePlace = this.changePlace.bind(this)
+        this.submitForm = this.submitForm.bind(this)
+
     }
     submitForm (e) {
         e.preventDefault()
@@ -54,9 +56,10 @@ export default class ChangePassword extends Component {
             state.user[event.target.name] = event.target.value
             console.log(state)
            // var cidade = state.user[0]
-            // console.log(cidade)
+            console.log(this.state)
             return state
         }
+        console.log(this.state)
 
         this.setState(handleState(this.state, event))
     }
@@ -92,7 +95,7 @@ refresh = () => {
                     onChange={this.handleChange} 
                     />
                     <br></br>
-                <form onSubmit={this.submitForm.bind(this)}>
+                <form onSubmit={this.submitForm}>
                 <button 
                 type="submit"
                 onClick={

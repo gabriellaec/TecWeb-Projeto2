@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import { JsonToTable } from "react-json-to-table";
 import './App.css';
+import Logo from "./logo.PNG";
 
 
 export default class Login extends Component {
@@ -94,7 +95,12 @@ export default class Login extends Component {
 
         return (
             <div class="form__group">
+            <img src = {Logo} class = 'imagem' id = "image" alt="weather" width="320" height="120"/>
+
+
                 <h1 class="title_login">Login</h1>
+
+
                 <input name="username"
                     class="form__input"
 

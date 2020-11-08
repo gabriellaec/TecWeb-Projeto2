@@ -130,7 +130,7 @@ render() {
     return (
         <div>
         <div>
-        <h1>Comments</h1>
+        <h1>Things to do</h1>
 
             <p >
                     <input 
