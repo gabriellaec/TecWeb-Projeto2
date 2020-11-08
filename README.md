@@ -1,5 +1,17 @@
 # TecWeb-Projeto2
 
+
+## API UTILIZADA
+[WeatherStack](https://weatherstack.com/)
+
+
+Fornece informações gerais e condições meteorológicas de diversas cidades do mundo
+
+
+## DESCRIÇÃO
+Quer viajar no fim de semana mas não sabe para onde? Ou está no meio de uma viagem de carro e não consegue decidir aonde parar? O Weather Now resolve seus problemas!
+Essa aplicação web, além de fornecer informações sobre um determinado local e o tempo atual nele, também é interativa. Os usuários podem tanto ler recomendações acerca de atividades e pontos turísticos, como escrevê-las. Podem também fornecer atualizações sobre possíveis mudanças nas condições do tempo da localidade. Além disso, a página de recomendações permite uma melhor preparação para a viagem, com dicas de o que fazer e vestir.
+
 ## LISTA DE FUNCIONALIDADES
 1.	Cadastro
 2.	Login
