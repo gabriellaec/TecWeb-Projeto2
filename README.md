@@ -53,3 +53,7 @@ Essa aplicação web, além de fornecer informações sobre um determinado local
 23.	Mudar senha
 24.	Deletar conta
 
+
+
+#ORGANIZAÇÃO DO GRUPO
+A Gabriella Mitu tem menos commits porque teve muitos problemas de configuração (no nmp e mongo). Porém, ela participou e ajudou da elaboração do trabalho.
