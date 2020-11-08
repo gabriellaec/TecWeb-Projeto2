@@ -5,7 +5,7 @@
 [WeatherStack](https://weatherstack.com/)
 
 
-Fornece informações gerais e condições meteorológicas de diversas cidades do mundo
+..*Fornece informações gerais e condições meteorológicas de diversas cidades do mundo
 
 
 ## DESCRIÇÃO
